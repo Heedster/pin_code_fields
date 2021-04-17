@@ -91,6 +91,9 @@ class PinCodeTextField extends StatefulWidget {
   /// Enable or disable the Field. Default is [true]
   final bool enabled;
 
+  /// Disable native keyboard. Default is [false]
+  final bool disableNativeKeyboard;
+
   /// [TextEditingController] to control the text manually. Sets a default [TextEditingController()] object if none given
   final TextEditingController controller;
 
@@ -187,6 +190,7 @@ class PinCodeTextField extends StatefulWidget {
     this.focusNode,
     this.onTap,
     this.enabled = true,
+    this.disableNativeKeyboard = false,
     this.inputFormatters = const <TextInputFormatter>[],
     this.textStyle = const TextStyle(
       fontSize: 20,
@@ -671,6 +675,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
                   controller: _textEditingController,
                   focusNode: _focusNode,
                   enabled: widget.enabled,
+                  readOnly: widget.disableNativeKeyboard,
                   autofillHints: widget.enablePinAutofill && widget.enabled
                       ? <String>[AutofillHints.oneTimeCode]
                       : null,
